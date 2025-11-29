@@ -1,0 +1,454 @@
+/* --- 1. RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 50px;
+  min-height: 100vh;
+}
+
+/* --- 2. THE PORTAL (Container) --- */
+.portal-container {
+  position: relative;
+  width: 600px;
+  height: 380px;
+  margin: 0 auto;
+}
+
+/* --- CENTRAL LOGO (Text Above Image) --- */
+.central-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -85%);
+  text-align: center;
+  z-index: 10;
+}
+
+.globe-img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin: 10px auto 0 auto;
+}
+
+.logo-text {
+  font-family: "Linux Libertine", "Georgia", Times, serif;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+
+.logo-sub {
+  font-family: "Linux Libertine", "Georgia", Times, serif;
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+}
+
+/* --- LANGUAGE LINKS (Base Style) --- */
+.lang-item {
+  position: absolute;
+  text-decoration: none;
+  color: #36c;
+  width: 130px;
+}
+
+.lang-item strong {
+  display: block;
+  font-size: 1rem;
+  color: #36c;
+}
+
+.lang-item small {
+  display: block;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.lang-item:hover strong {
+  text-decoration: underline;
+}
+
+/* --- POSITIONING THE RING (The Curve) --- */
+
+/* LEFT SIDE (Aligns Right -> Towards Globe) */
+.lang-item[class*="left"] {
+  text-align: right;
+}
+
+.left-1 {
+  top: 15px;
+  left: 35px;
+} /* Top - Closer to center */
+.left-2 {
+  top: 80px;
+  left: 10px;
+} /* Pushed out */
+.left-3 {
+  top: 145px;
+  left: 0px;
+} /* Middle - Furthest out */
+.left-4 {
+  top: 210px;
+  left: 10px;
+} /* Pushed out */
+.left-5 {
+  top: 275px;
+  left: 35px;
+} /* Bottom - Closer to center */
+
+/* RIGHT SIDE (Aligns Left -> Towards Globe) */
+.lang-item[class*="right"] {
+  text-align: left;
+}
+
+.right-1 {
+  top: 15px;
+  right: 35px;
+} /* Top  */
+.right-2 {
+  top: 80px;
+  right: 10px;
+} /* Pushed out */
+.right-3 {
+  top: 145px;
+  right: 0px;
+} /* Middle */
+.right-4 {
+  top: 210px;
+  right: 10px;
+} /* Pushed out */
+.right-5 {
+  top: 275px;
+  right: 35px;
+} /* Bottom  */
+
+/* --- 3. SEARCH BAR --- */
+.search-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #a2a9b1;
+  border-radius: 2px;
+  padding: 3px;
+  width: 450px;
+  height: 48px;
+  background: white;
+}
+
+.search-box:focus-within {
+  border-color: #36c;
+  box-shadow: 0 0 0 2px rgba(51, 102, 204, 0.2);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+
+.lang-select {
+  font-size: 0.8rem;
+  color: #555;
+  padding: 0 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-right: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+.search-btn {
+  background-color: #36c;
+  border: none;
+  color: white;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 2px;
+}
+
+/* --- 4. TOGGLE BAR --- */
+.lang-toggle-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 20px auto;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #c8ccd1;
+}
+
+.lang-btn {
+  border: none;
+  background: white;
+  padding: 0 20px;
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 1rem;
+}
+
+/* --- 5. FOOTER --- */
+footer {
+  width: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #c8ccd1;
+  padding: 30px;
+  font-size: 0.85rem;
+}
+
+.footer-grid {
+  display: flex;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+.footer-text {
+  flex: 1;
+  color: #555;
+  line-height: 1.5;
+}
+
+.app-links {
+  margin-top: 20px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.app-links i {
+  font-size: 1.5rem;
+}
+
+.projects-list {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #555;
+}
+
+.project i {
+  font-size: 1.5rem;
+}
+
+/* Icon Colors */
+.blue {
+  color: #36c;
+}
+.green {
+  color: #00af89;
+}
+.brown {
+  color: #8c6d2c;
+}
+.grey {
+  color: #555;
+}
+.orange {
+  color: #e67e22;
+}
+.pink {
+  color: #e91e63;
+}
+
+.legal {
+  text-align: center;
+  margin-top: 30px;
+  color: #777;
+  font-size: 0.75rem;
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+  .portal-container {
+    width: 100%;
+    height: auto;
+    padding-bottom: 50px;
+  }
+  .central-logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin-bottom: 20px;
+  }
+  .lang-item {
+    position: static;
+    text-align: center !important;
+    display: block;
+    margin: 10px auto;
+    width: auto;
+  }
+  .footer-grid {
+    flex-direction: column;
+  }
+  .projects-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* --- FOOTER & PROJECTS SECTION --- */
+
+/* The Language Bar Separator */
+.lang-bar {
+  width: 100%;
+  border-top: 1px solid #c8ccd1;
+  border-bottom: 1px solid #c8ccd1;
+  margin-top: 40px;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #f8f9fa;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #36c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Footer Container */
+footer {
+  width: 100%;
+  padding: 30px 20px;
+  background-color: #fff;
+  font-size: 0.85rem;
+  position: relative;
+  bottom: auto;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  text-align: left;
+}
+
+/* Left Side (Foundation) */
+.footer-left {
+  flex: 1;
+}
+
+.foundation-info {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.foundation-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.app-promo {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.app-logo {
+  width: 35px;
+  height: 35px;
+}
+
+/* Right Side (Projects Grid) */
+.footer-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.project-icon {
+  font-size: 1.5rem;
+  margin-top: 2px;
+}
+
+/* Icon Colors to match the real logos */
+.color-blue {
+  color: #339966;
+}
+.color-green {
+  color: #00af89;
+}
+.color-brown {
+  color: #8c6d2c;
+}
+.color-grey {
+  color: #555;
+}
+.color-orange {
+  color: #e67e22;
+}
+.color-pink {
+  color: #e91e63;
+}
+
+/* Bottom License Text */
+.license-text {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.75rem;
+  color: #54595d;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+  .footer-right {
+    grid-template-columns: 1fr 1fr;
+  }
+}
